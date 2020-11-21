@@ -1,0 +1,233 @@
+#Container {
+	left: 0px;
+	top: 0px;
+	width: 760px;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#header_ {
+	float: left;
+	left: 0px;
+	top: 0px;
+	width: 760px;
+	height: 388px;
+	background-image: url('../images/header.jpg');
+}
+#header_ ul.navi{
+	width: 750px;
+	display: block;
+	position: absolute;
+	top: 347px;
+	left: 58px;
+	padding: 0;
+	margin: 0;
+	background: none;
+}
+#header_ ul.navi li{
+	border-width: 1px;
+	background: url('../images/saparation.gif') no-repeat right;
+	height: 22px;
+	padding: 0 18px 0 5px;
+	margin: 0;
+	display: block;
+	float: left;
+}
+#header_ ul.navi li a{
+	font: 14px/21px Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-indent: 0px;
+	padding: 0 0 0 33px;
+	font-weight: bold;
+	margin: 0;
+	width: inherit;
+	letter-spacing: -1px;
+	background-repeat: no-repeat;
+	background-image: url('../images/button.png');
+}
+#header_ ul.navi li a:hover{
+	color: #FFFF99;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-image: url('../images/button_over.png');
+}
+#left_ {
+	float: left;
+	left: 0px;
+	top: 388px;
+	width: 248px;
+	background-image: url('../images/left.jpg');
+	background-repeat: no-repeat;
+}
+#left_ h2{
+	font: 26px/24px "Calisto MT";
+	color: #CCFF66;
+	font-weight: normal;
+	display: block;
+	letter-spacing: -1px;
+	word-spacing: 0em;
+	text-indent: 0px;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 10px;
+	padding-top: 8px;
+	padding-left: 65px;
+}
+#left_ p{
+	background: no-repeat;
+	color: #DDE6C8;
+	padding: 0 0 0 65px;
+	width: 160px;
+	display: block;
+	font: 12px/18px Tahoma;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+	letter-spacing: 0px;
+}
+#left_ p span{
+	color: #99CC00;
+	font-weight: bold;
+	font-size: 15px;
+	letter-spacing: 0px;
+}
+#left_ p span.bg{
+	color: #799fbb;
+}
+#left_ p a{
+	font: 13px/12px Tahoma;
+	font-weight: normal;
+	color: #FFCC00;
+	text-decoration: underline;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+}
+#left_ p a:hover{
+	background: no-repeat;
+	color: #FFFF99;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+#right_ {
+	float: left;
+	left: 248px;
+	top: 388px;
+	width: 512px;
+	background-image: url('../images/right.jpg');
+}
+#right_ h2{
+	font: 29px/24px "Calisto MT";
+	color: #CCFF66;
+	font-weight: normal;
+	display: block;
+	letter-spacing: -1px;
+	word-spacing: 0em;
+	text-indent: 0px;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+#right_ p{
+	background: no-repeat;
+	color: #DDE6C8;
+	padding: 0 0 0 10px;
+	width: 460px;
+	display: block;
+	font: 12px/20px Tahoma;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+	letter-spacing: 0px;
+}
+#right_ p span{
+	color: #99CC00;
+	font-weight: bold;
+	font-size: 15px;
+	letter-spacing: 0px;
+}
+#right_ p span.bg{
+	color: #799fbb;
+}
+#right_ p a{
+	font: 13px/12px "trebuchet MS";
+	font-weight: normal;
+	color: #FFCC00;
+	text-decoration: underline;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+}
+#right_ p a:hover{
+	background: no-repeat;
+	color: #FFFF66;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+#footer1_ {
+	float: left;
+	left: 0px;
+	top: 600px;
+	width: 760px;
+	height: 23px;
+	background-image: url('../images/footer1.jpg');
+}
+#footer2_ {
+	float: left;
+	left: 0px;
+	top: 623px;
+	width: 760px;
+	background-image: url('../images/footer2.jpg');
+}
+
+#footer2_  p{
+	background: no-repeat;
+	color: #DDE6C8;
+	padding: 0;
+	margin: 0 0 0 45px;
+	width: 670px;
+	display: block;
+	font: 13px/17px Tahoma;
+	text-align: center;
+}
+#footer2_  p span{
+	color: #DDE6C8;
+	font-weight: bold;
+}
+#footer2_  p span.bg{
+	color: #799fbb;
+}
+#footer2_  p a{
+	font: 13px/12px Tahoma;
+	font-weight: bold;
+	color: #FFCC00;
+	text-decoration: underline;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+}
+#footer2_  p a:hover{
+	background: no-repeat;
+	color: #FFFF66;
+}
+
+#footer3_ {
+	float: left;
+	left: 0px;
+	top: 673px;
+	width: 760px;
+	height: 27px;
+	background-image: url('../images/footer3.jpg');
+}
+body {
+	margin: 0px;
+	background-image: url('../images/bg.jpg');
+	background-repeat: repeat-x;
+	background-color: #475810;
+}
