@@ -48,6 +48,10 @@
 
                                 // Redirect user to welcome page
                                 header("location: welcome.php");
+                            } else {
+                                // User has entered wrong password
+                                $password_err = "Invalid Username or Password!";
+                                echo "<script>alert(' $password_err ')</script>";
                             }
                         }
                     }
@@ -68,13 +72,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Login Page</title>
+    <link rel="icon" href="images/logo.png" type="image/x-icon">
   </head>
   <body>
 
     <!-- Creating the Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Php Login System</a>
+        <i class="fa fa-train" style= "color: white;"></i>&nbsp;&nbsp;<a class="navbar-brand" href="#">Railway Reservation System</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -82,7 +88,7 @@
             <div class="navbar-nav">
             <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
             <a class="nav-link" href="register.php">Register</a>
-            <a class="nav-link" href="#">Contact Us</a>
+            <a class="nav-link" href="https://fear-the-lord.github.io/Souvik-Portfolio-Website/">Contact Us</a>
             <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
             </div>
         </div>
