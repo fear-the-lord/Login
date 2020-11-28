@@ -10,32 +10,133 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true){
   // Import the configuration
   require_once "config.php";
 
-  $name = ""; 
-  $name_err = ""; 
+  $name = $email = $to = $from = $phone = $date = $train_number = $gender = $age = ""; 
+  $name_err = $email_err = $to_err = $from_err = $phone_err = $date_err = $train_number_err = $gender_err = $age_err = ""; 
 
   // When the send button is hit, this condition will execute
   if($_SERVER['REQUEST_METHOD'] == "POST") {
     
     // Check if the name is empty
-    if(empty(trim($_POST['name']))) {
+    if(empty(trim(isset($_POST['name'])))) {
       $name_err = "Name cannot be kept blank!";
-      echo "<script>alert('$name_err');</script>";
+      // echo "<script>alert('$name_err');</script>";
     } else {
       $name = trim($_POST['name']);
     }
 
+    // Check if the email is empty 
+    if(empty(trim(isset($_POST['email'])))) {
+      $email_err = "Email cannot be kept blank!"; 
+      // echo "<script>alert('$email_err');</script>";
+    } else {
+      $email = trim($_POST['email']);
+    }
+
+    // Check if to_station is empty
+    if(empty(trim(isset($_POST['to'])))) {
+      $to_err = "Starting station cannot be kept blank!"; 
+      // echo "<script>alert('$to_err');</script>";
+    } else {
+      $to = trim($_POST['to']);
+    }
+
+     // Check if from_station is empty
+     if(empty(trim(isset($_POST['from'])))) {
+      $from_err = "Destination station cannot be kept blank!"; 
+      // echo "<script>alert('$from_err');</script>";
+    } else {
+      $from = trim($_POST['from']);
+    }
+
+    // Check if phone number is empty and valid
+    if(empty(trim(isset($_POST['phone'])))) {
+      $phone_err = "Phone Number cannot be kept blank!"; 
+      // echo "<script>alert('$phone_err');</script>";
+    } else if((is_numeric(trim($_POST['phone']))) != 1) {
+      $phone_err = "Phone Number must be digits!"; 
+      echo "<script>alert('$phone_err');</script>";
+    } else if(strlen(trim($_POST['phone'])) != 10) {
+      $phone_err = "Phone Number should have 10 digits!"; 
+      echo "<script>alert('$phone_err');</script>";
+    } else {
+      $phone = trim($_POST['phone']);
+    }
+
+    // Check if date is empty
+    if(empty(isset($_POST['journey_date']))) {
+      $date_err = "Date is not set!";
+    } else {
+      $date = $_POST['journey_date'];
+    }
+
+    // Check if train number is valid
+    if(empty(trim(isset($_POST['train_number'])))) {
+      $train_number_err = "Train Number must not be empty!";
+    } else if((is_numeric(trim($_POST['train_number']))) != 1) {
+      $train_number_err = "Train Number should contain only digits!";
+      echo "<script>alert('$train_number_err');</script>";
+    } else if(strlen(trim($_POST['train_number'])) != 5) {
+      $train_number_err = "Train number should havr 5 digis";
+      echo "<script>alert('$train_number_err');</script>";
+    } else {
+      $train_number = trim($_POST['train_number']);
+    }
+
+    // Check if train name is empty 
+    if(empty(trim(isset($_POST['train_name'])))) {
+      $train_name_err = "Train name cannot be kept blank!"; 
+      // echo "<script>alert('$from_err');</script>";
+    } else {
+      $train_name = trim($_POST['train_name']);
+    }
+
+    // Check if the gender is valid 
+    if(empty(trim(isset($_POST['gender'])))) {
+      $gender_err = "Gender should not be kept blank!"; }
+    // } else if(trim($_POST['gender']) != 'male' || trim($_POST['gender']) != "female" || trim($_POST['gender']) != "other") {
+    //   $gender_err = "Please enter a correct value!";
+    //   $echo "<script>alert('$gender_err');</script>";
+    // } 
+    else {
+      $gender = trim($_POST['gender']);
+    }
+
+    // Check if the age is valid
+    if(empty(trim(isset($_POST['age'])))) {
+      $age_err = "Age should not be kept blank!";
+    } else if(is_numeric(trim($_POST['age'])) != 1) {
+      $age_err = "Age should be a number!";
+      echo "<script>alert('$age_er');</script>";
+    } else {
+      $age = trim($_POST['age']);
+    }
+
+
     // If the inputs are valid
-    if($name_err == "") {
-      $sql = "INSERT INTO tickets(name) VALUES (?)";
+    if(empty($name_err) && empty($email_err)  && empty($to_err) && empty($from_err) && empty($phone_err) && empty($date_err) && empty($train_number_err) && empty($train_name_err) && empty($gender_err) && empty($age_err)) {
+      $pnr = rand(1000000, 9999999);
+      $pnr_err = "Please note this PNR number for future purpose: $pnr";
+      echo "<script>alert('$pnr_err');</script>";
+      $sql = "INSERT INTO tickets(name, email, to_station, from_station, phone, journey_date, train_number, train_name, gender, age, pnr_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       // Prepare the query 
       $stmt = mysqli_prepare($conn, $sql);
       if($stmt) {
         // Bind the parameter for the markers
-        mysqli_stmt_bind_param($stmt, "s", $param_name);
+        mysqli_stmt_bind_param($stmt, "sssssssssss", $param_name, $param_email, $param_to, $param_from, $param_phone, $param_date, $param_train_number, $param_train_name, $param_gender, $param_age, $param_pnr);
         // Set the parameters
         $param_name = $name; 
+        $param_email = $email;
+        $param_to = $to;
+        $param_from = $from;
+        $param_phone = $phone;
+        $param_date = $date;
+        $param_train_number = $train_number;
+        $param_train_name = $train_name;
+        $param_gender = $gender;
+        $param_age = $age;
+        $param_pnr = $pnr;
         // Try to execute the query 
-        mysqli_stmt_execute($stmt);
+        mysqli_stmt_execute($stmt);   
       }
       mysqli_stmt_close($stmt);
     }
@@ -93,31 +194,31 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true){
     <div class="fa fa-times fa-lg overlay-close" id="overlay-close"></div>
     <h1 class="main-heading">Enter Details</h1>
     <h3 class="blurb">Booking a ticket is now hassle free &mdash;</h3><span class="blurb-tagline">and won't take longer than a couple of seconds.</span>
-    <form class="signup-form" method="post" action="#" novalidate="novalidate">
+    <form class="signup-form" method="post" action="">
       <label for="signup-name">Full Name</label>
-      <input id="signup-name" type="text" name="name" autocomplete="off"/>
+      <input id="signup-name" type="text" name="name" autocomplete="off" required = "required"/>
       <label for="signup-email">Email Address</label>
-      <input id="signup-email" type="email" name="email" autocomplete="off"/>
+      <input id="signup-email" type="email" name="email" autocomplete="off" required = "required"/>
       <label for="signup-pw">To</label>
-      <input id="signup-pw" type="text" name="to" autocomplete="off"/>
+      <input id="signup-pw" type="text" name="to" autocomplete="off" required = "required"/>
       <label for="signup-cpw">From</label>
-      <input id="signup-cpw" type="text" name="phone" autocomplete="off"/>
+      <input id="signup-cpw" type="text" name="from" autocomplete="off" required = "required"/>
       <label for="signup-cpw">Phone Number</label>
-      <input id="signup-cpw" type="text" name="phone" autocomplete="off"/> 
+      <input id="signup-cpw" type="text" name="phone" autocomplete="off" required = "required"/> 
       <div style = "float: left;">
         <label for="signup-cpw">Gender</label>
-        <input id="signup-cpw" type="text" name="gender" autocomplete="off" style = "width: 200px;"/>
+        <input id="signup-cpw" type="text" name="gender" autocomplete="off" style = "width: 200px;" required = "required"/>
         <label for="signup-cpw">Age</label>
-        <input id="signup-cpw" type="text" name="gender" autocomplete="off" style = "width: 200px;"/>
+        <input id="signup-cpw" type="text" name="age" autocomplete="off" style = "width: 200px;" required = "required"/>
       </div>
       
       <div style = "float: right;">
         <label for="signup-cpw">Train Number</label>
-        <input id="signup-cpw" type="text" name="train_number" autocomplete="off" style = "width: 200px;"/>
+        <input id="signup-cpw" type="text" name="train_number" autocomplete="off" style = "width: 200px;" required = "required"/>
         <label for="signup-cpw">Train Name</label>
-        <input id="signup-cpw" type="text" name="train_name" autocomplete="off"/>
+        <input id="signup-cpw" type="text" name="train_name" autocomplete="off" required = "required"/>
         <label for="Date of Journey">Date of Journey</label>
-        <input type="date" id="birthday" name="journey_date"> 
+        <input type="date" id="birthday" name="journey_date" required = "required"> 
       </div>
       <button class="btn btn-outline submit-btn" style = "color: blue;"><span>Book</span></button>
     </form>
