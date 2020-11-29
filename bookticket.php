@@ -186,7 +186,8 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true){
     </nav>
 
     <main role="main">
-  <button class="popup-trigger btn" id="popup-trigger"><span>Book Now<i class="fa fa-plus-square-o"></i></span></button>
+  <button class="popup-trigger btn" id="popup-trigger"><span>Book Now<i class="fa fa-plus-square-o"></i></span></button> <br> <br>
+  <button><a href = "" style = "text-decoration: none; top: 50%; right: 50%;"></button>
 </main>
 <div class="overlay" id="overlay">
   <div class="overlay-background" id="overlay-background"></div>

@@ -48,6 +48,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true){
     <div class="login">
         <form method="post" action = "bookticket.php">
             <button type="submit" class="btn btn-primary btn-block btn-large">Book Tickets</button>
+            <button class="btn btn-primary btn-block btn-large" style = "color: white;  text-decoration: none;"><a href = "enterpnr.php">View Ticket<a></button>
         </form>
     </div>
 

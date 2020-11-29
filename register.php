@@ -95,8 +95,8 @@
 
                     mail($to, $subject, $message, $headers);
 
-                    header("location: mailconfirm.html");
-                    header( "refresh:5;url=login.php" );
+                    header("location: mailconfirm.php");
+                    // header( "refresh:5;url=login.php" );
                 } else {
                     echo '<script>alert("Something went wrong...cannot redirect!")</script>';
                 }
